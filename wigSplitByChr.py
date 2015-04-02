@@ -1,3 +1,7 @@
+'''
+hg38 conservation data comes in one big wigFix file. This script converts it into one file per chromosome,
+which is the necessary format for splicemod. This was a quicker fix than changing the indexing that splicemod does.
+'''
 __author__ = 'adriana'
 
 import sys

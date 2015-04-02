@@ -1,3 +1,7 @@
+'''
+Quick script for printing the distribution of natural background sequences in the bins of the mutant library.
+'''
+
 __author__ = 'adriana'
 
 from collections import defaultdict

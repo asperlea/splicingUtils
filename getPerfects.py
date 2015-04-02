@@ -1,3 +1,10 @@
+'''
+Quick script to get perfect matches from a bowtie2 alignment. Iterates through every line and picks sequences with
+a "170M" CIGAR string and a "MD:Z:170" tag.
+Usage: python getPerfects.py <file1>
+       <file1> : bowtie2 alignment file
+'''
+
 import sys
 
 def main():

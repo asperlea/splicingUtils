@@ -1,8 +1,21 @@
+'''
+homeMadeGrep.py maps a set of DNA sequences from an input file to another input reference file. This essentially
+a home made implementation of grep, adapted to the details of our analysis, but can be easily customized for other uses.
+Usage: python homeMadeGrep.py <file1> <file2>
+       <file1>: a file containing a list of DNA sequences, one per line
+       <file2>: a file containing the reference chip; every line has the Ensembl ID of the sequence, followed by the sequence
+
+This script assumes that the sequences in the file2 reference are contained between the GGCGCGCC and TTAATTAA primer
+sites, and that the sequences in file1 contain the TTAATTAA primer as well.
+
+Output:
+The list of sequences in file1, and their corresponding Ensembl IDs.
+'''
+
 __author__ = 'adriana'
 
 import os
 import sys
-from itertools import islice
 
 def main():
     if len(sys.argv) < 3:
@@ -13,22 +26,15 @@ def main():
 
     # hash text
     textHash = {}
-    wtf = ""
-    while True:
-        next_4_lines = list(islice(text, 4))
-        if not next_4_lines:
-            break
-
-        header = next_4_lines[0].split()
-        ID = header[0]
-        sequence = next_4_lines[1].strip().upper() + next_4_lines[2].strip().upper() + next_4_lines[3].strip().upper()
+    for line in text:
+        ID = line.split()[0]
+        sequence = line.split()[1][15:-15].upper() #15:-15 slicing removes primers
         textHash[sequence] = ID
         
     for line in words:
         word = line.strip()
         pos = word.find("TTAATTAA")
-        word = word[:pos]
-
+        word = word[:pos] # only keep everything up to TTAATTAA
         if word in textHash:
             print word, textHash[word]
 

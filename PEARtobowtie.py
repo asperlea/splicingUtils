@@ -1,3 +1,7 @@
+'''
+PEARtobowtie.py converts PEAR aligned reads to the fastq format required by bowtie2.
+'''
+
 __author__ = 'adriana'
 
 import sys
