@@ -6,9 +6,9 @@ from collections import defaultdict
 from itertools import islice
 from scipy.stats.stats import pearsonr
 
-binList = ["nat2", "nat6", "nat5", "nat8", "nat9", "nat10", "nat11", "nat12"] #natural
+binList = ["nat2", "nat5", "nat8", "nat9", "nat6", "nat10", "nat11", "nat12"] #natural
 
-f_j = [0.1142340965, 0.02279123093, 0.09818295522, 0.0403015669, 0.06507313345, 0.1603029566, 0.1568286836, 0.1927874092] #natural
+f_j = [0.1142340965, 0.09818295522, 0.0403015669, 0.06507313345, 0.02279123093, 0.1603029566, 0.1568286836, 0.1927874092] #natural
 
 '''
 Example of line in countsPerbin_*.txt
