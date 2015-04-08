@@ -17,13 +17,14 @@ from collections import defaultdict
 
 def main():
     if len(sys.argv) < 4:
+        print '''Usage: python getCountsMut.py <mut/nat> <file1> <file2>
+                 <file1>: name of file in each bin directory containing the perfectly mapped reads
+                 <file2>: name of file containing all exons in the library'''
+        exit(1)
+    else:
         type = sys.argv[1]
         seqsFilename = sys.argv[2]
         allSeqs = sys.argv[3]
-        print '''Usage: python getCountsMut.py <mut/nat> <file1> <file2>
-                        <file1>: name of file in each bin directory containing the perfectly mapped reads
-                        <file2>: name of file containing all exons in the library'''
-        exit(1)
     countsFile = open("countsPerbin" + type + ".txt", "w")
 
     # bin directory names
@@ -39,7 +40,7 @@ def main():
         binContigs = defaultdict(int)
         total = 0
         for line in binContigsFile:
-            contig = line.strip()
+            contig = line.strip().split()[0]
             binContigs[contig] += 1
             total += 1
         totalCounts.append(total)

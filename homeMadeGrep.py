@@ -17,6 +17,7 @@ __author__ = 'adriana'
 
 import os
 import sys
+from itertools import islice
 
 def main():
     if len(sys.argv) < 3:
